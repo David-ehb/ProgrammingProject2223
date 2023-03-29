@@ -1,11 +1,12 @@
 body {
     background-image: url('/log\ in\ pagina/photo\'s/achtergrond.png');
+    margin: 0;
 }
 
 #block_form {
     max-width: 400px;
     margin: 0 auto;
-    margin-top: 10rem;
+    margin-top: 8rem;
     padding: 20px;
     background-color: #f2f2f2;
     border: 1px solid #ccc;
@@ -67,8 +68,61 @@ a:hover {
     color: #45a049;
 }
 
-@media only screen and (max-width: 450px) {
-    form {
-        max-width: 300px;
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #333;
+    color: white;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  #copywrite {
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  #contact {
+    margin-left: 20px;
+  }
+  
+  #contact a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  #contact a:hover {
+    font-weight: 800;
+    color: beige;
+  }
+
+
+/*Dit is de aangepaste versie voor een tablet*/
+@media (max-width: 821px) {
+
+  }
+  
+  /*Dit is de aangepaste versie voor een smartphone*/
+  @media (max-width: 451px) {
+    #block_form {
+        max-width: 400px;
+        margin: 0 auto;
     }
-}
+
+    #copywrite {
+        text-align: left; /*Default*/
+        flex-grow: 1;
+      }
+  }
+  
+  /*Ik denk eerlijk gezegd dat deze niet nodig is aangezien de meeste schermen wel groter zullen zijn. Geef jullie input maar.*/
+  
+  @media  (max-width: 340px) {
+  
+  }
