@@ -102,12 +102,6 @@ a:hover {
     color: beige;
   }
 
-
-/*Dit is de aangepaste versie voor een tablet*/
-@media (max-width: 821px) {
-
-  }
-  
   /*Dit is de aangepaste versie voor een smartphone*/
   @media (max-width: 451px) {
     #block_form {
@@ -121,8 +115,3 @@ a:hover {
       }
   }
   
-  /*Ik denk eerlijk gezegd dat deze niet nodig is aangezien de meeste schermen wel groter zullen zijn. Geef jullie input maar.*/
-  
-  @media  (max-width: 340px) {
-  
-  }
