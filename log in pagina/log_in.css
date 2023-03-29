@@ -1,0 +1,74 @@
+body {
+    background-image: url('/log\ in\ pagina/photo\'s/achtergrond.png');
+}
+
+#block_form {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 10rem;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/*Dit is het logo*/
+img {
+    width: 30%;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 75%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    width: 75%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/*Label onthoud mijn gegevens*/
+label {
+    color: #666;
+    font-size: 14px;
+}
+
+input[type="checkbox"] {
+    margin-right: 1px;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #45a049;
+}
+
+@media only screen and (max-width: 450px) {
+    form {
+        max-width: 300px;
+    }
+}
