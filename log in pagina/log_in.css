@@ -74,44 +74,49 @@ a:hover {
     bottom: 0;
     background-color: #333;
     color: white;
-    height: 50px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
     padding: 0 20px;
     width: 100%;
     box-sizing: border-box;
-  }
-  
-  #copywrite {
+}
+
+#footer div {
+    margin: 10px;
+}
+
+#copywrite {
     text-align: center;
     flex-grow: 1;
-  }
-  
-  #contact {
-    margin-left: 20px;
-  }
-  
-  #contact a {
+}
+
+#contact {
+    align-self: flex-end;
+}
+
+#contact a {
     color: white;
     text-decoration: none;
-  }
-  
-  #contact a:hover {
+}
+
+#contact a:hover {
     font-weight: 800;
     color: beige;
-  }
+}
 
-  /*Dit is de aangepaste versie voor een smartphone*/
-  @media (max-width: 451px) {
+/*Dit is de aangepaste versie voor een smartphone*/
+@media (max-width: 451px) {
     #block_form {
         max-width: 400px;
         margin: 0 auto;
     }
 
     #copywrite {
-        text-align: left; /*Default*/
+        text-align: left;
+        /*Default*/
         flex-grow: 1;
-      }
-  }
-  
+    }
+}
