@@ -46,6 +46,10 @@
     cursor: pointer;
   }
 
+  a:hover{
+    font-weight: bold;
+  }
+
   form {
 	max-width: 600px;
 	margin: 0 auto;
@@ -106,8 +110,10 @@ input[type="submit"]:hover {
     color: red;
   }
 
- 
-  #footer {
+
+
+
+#footer {
     position: fixed;
     bottom: 0;
     background-color: #333;
@@ -120,6 +126,7 @@ input[type="submit"]:hover {
     padding: 0 20px;
     width: 100%;
     box-sizing: border-box;
+    font-family: system-ui, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #footer div {
