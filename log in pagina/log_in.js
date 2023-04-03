@@ -1,26 +1,27 @@
+'use strict'
 import express from 'express';
 import session from 'express-session';
 import { createConnection, escape } from 'mysql';
 
 const app = express();
 
-// Set up session middleware
-app.use(session({
-  secret: 'RandomStringDieWeGeheimMoetenHouden',
-  resave: false,
-  saveUninitialized: true
-}));
+// // Set up session middleware
+// app.use(session({
+//   secret: 'RandomStringDieWeGeheimMoetenHouden',
+//   resave: false,
+//   saveUninitialized: true
+// }));
 
 // Create connection to database
 const connection = createConnection({
-  host: 'https://dt5.ehb.be/',
+  host: 'https://dt5.ehb.be/localhost',
   user: '2223PROGPROJGR1@localhost',
   password: 'NsEo8m',
   database: '2223PROGPROJGR1',
 });
 
 // Handle login form submission
-app.post('/login', (req, res) => {
+app.post('/Log_in.html', (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
