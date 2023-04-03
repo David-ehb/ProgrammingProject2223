@@ -5,23 +5,23 @@ import { createConnection, escape } from 'mysql';
 
 const app = express();
 
-// // Set up session middleware
-// app.use(session({
-//   secret: 'RandomStringDieWeGeheimMoetenHouden',
-//   resave: false,
-//   saveUninitialized: true
-// }));
+// Set up session middleware
+app.use(session({
+  secret: 'RandomStringDieWeGeheimMoetenHouden',
+  resave: false,
+  saveUninitialized: true
+}));
 
 // Create connection to database
 const connection = createConnection({
-  host: 'https://dt5.ehb.be/localhost',
-  user: '2223PROGPROJGR1@localhost',
+  host: 'localhost',
+  user: '2223PROGPROJGR1',
   password: 'NsEo8m',
   database: '2223PROGPROJGR1',
 });
 
 // Handle login form submission
-app.post('/Log_in.html', (req, res) => {
+app.post('http://127.0.0.1:5500/log%20in%20pagina/Log_in.html', (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
@@ -39,7 +39,7 @@ app.post('/Log_in.html', (req, res) => {
     if (results.length === 1) {
       // User is authenticated, create session
       req.session.userId = results[0].id;
-      res.redirect('/index.html');
+      res.redirect('Log_in.html');
     } else {
       // Invalid username or password
       res.status(401).send('Ongeldige gebruikersnaam of wachtwoord');
