@@ -2,6 +2,7 @@
   const postcodeInput = document.querySelector('#postcode');
   const postcodeError = document.querySelector('#postcode-error');
 
+
   form.addEventListener('submit', (event) => {
     if (postcodeInput.validity.patternMismatch) {
       event.preventDefault();
@@ -50,6 +51,20 @@ function checkUsername() {
     });
 }
 
+
+const form = document.querySelector('form');
+const successPopup = document.querySelector('#success-popup');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (validateForm()) {
+    successPopup.style.display = 'block';
+    form.reset();
+    setTimeout(() => {
+      successPopup.style.display = 'none';
+    }, 3000); // de pop-up verdwijnt na 3 seconden
+  }
+});
 
 
 
