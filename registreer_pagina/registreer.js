@@ -2,7 +2,6 @@ const form = document.querySelector('form');
 const postcodeInput = document.querySelector('#postcode');
 const postcodeError = document.querySelector('#postcode-error');
 
-
 form.addEventListener('submit', (event) => {
   if (postcodeInput.validity.patternMismatch) {
     event.preventDefault();
@@ -78,4 +77,21 @@ form.addEventListener('submit', (event) => {
   }
 });
 
+
+const gemeenteSelect = document.getElementById("gemeente");
+
+postcodeInput.addEventListener("input", async () => {
+  const response = await fetch(`https://api.basisregisters.vlaanderen.be/v2/postinfo/${postcodeInput.value}`);
+  const data = await response.json();
+  gemeenteSelect.innerHTML = "";
+  for (var i = 0; i < data.postnamen.length; ++i) {
+    let result = data.postnamen[i].geografischeNaam;
+    if (result !== undefined) {
+      const option = document.createElement("option");
+      option.value = result.spelling;
+      option.text = result.spelling;
+      gemeenteSelect.appendChild(option);
+    }
+  }
+});
 
