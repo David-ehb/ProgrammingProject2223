@@ -1,4 +1,12 @@
 
+body {
+  background-image: url('/log\ in\ pagina/photos/achtergrond.png');
+  margin: 0;
+}
+
+form{
+  background-color: white;
+}
 
 #banner {
     background-color: #333;
