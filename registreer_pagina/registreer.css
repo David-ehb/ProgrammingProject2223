@@ -1,111 +1,113 @@
-
 body {
   background-image: url('/log\ in\ pagina/photos/achtergrond.png');
   margin: 0;
 }
 
-form{
+form {
   background-color: white;
 }
 
 #banner {
-    background-color: #333;
-    color: white;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-  }
-  
-  #logo {
-    height: 70px;
-  }
+  background-color: #333;
+  color: white;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
 
-  #buttons {
-    display: flex;
-    align-items: center;
-  }
+#logo {
+  height: 70px;
+}
 
-  h1{
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-align: center;
-    margin-top: 50px;
-  }
-  
-  .button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 10px 4px 10px;
-    /*afstand tussen buttons*/
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .button:hover {
-    background-color: #3e8e41;
-    transition: background-color 0.2s ease;
-    cursor: pointer;
-  }
+#buttons {
+  display: flex;
+  align-items: center;
+}
 
-  a:hover{
-    font-weight: bold;
-  }
+h1 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
 
-  form {
-	max-width: 600px;
-	margin: 0 auto;
-	padding: 100px;
-	border: 1px solid #ccc;
-	border-radius: 10px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 10px 4px 10px;
+  /*afstand tussen buttons*/
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+a:hover {
+  font-weight: bold;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 100px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 label {
-	display: block;
-	margin-bottom: 10px;
-	font-weight: bold;
-	color: #555;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #555;
 }
 
-input[type="text"], input[type="email"], input[type="password"], input[type="date"] {
-	padding: 8px 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	font-size: 16px;
-	width: 100%;
-	margin-bottom: 20px;
-	box-sizing: border-box;
-	background-color: #f6f6f6;
-	color: #555;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  background-color: #f6f6f6;
+  color: #555;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 }
 
 
 
 input[type="submit"] {
-	padding: 10px;
-	background-color: #008000;
-	border: none;
-	border-radius: 5px;
-	color: #fff;
-	font-weight: bold;
-	cursor: pointer;
-	transition: all 0.3s ease-in-out;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 10px;
+  background-color: #008000;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 }
 
 input[type="submit"]:hover {
-	background-color: #006400;
+  background-color: #006400;
 }
 
 select {
@@ -119,55 +121,62 @@ select {
   background-color: #f6f6f6;
 }
 
-  .error {
-    color: red;
-    font-size: 0.8em;
-  }
 
-  #username-validation {
-    color: red;
-  }
+.textlabel {
+  display: flex;
+  gap: 1em;
+}
+
+.error {
+  color: red;
+  font-size: 0.8em;
+  margin: 1;
+}
+
+#username-validation {
+  color: red;
+}
 
 
 
 
 #footer {
-    position: fixed;
-    bottom: 0;
-    background-color: #333;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px;
-    width: 100%;
-    box-sizing: border-box;
-    font-family: system-ui, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+  position: fixed;
+  bottom: 0;
+  background-color: #333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: system-ui, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #footer div {
-    margin: 10px;
+  margin: 10px;
 }
 
 #copywrite {
-    text-align: center;
-    flex-grow: 1;
+  text-align: center;
+  flex-grow: 1;
 }
 
 #contact {
-    align-self: flex-end;
+  align-self: flex-end;
 }
 
 #contact a {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 #contact a:hover {
-    font-weight: 800;
-    color: beige;
+  font-weight: 800;
+  color: beige;
 }
 
 
@@ -222,14 +231,14 @@ select {
   border-radius: 0.25rem 0 0 0.25rem;
 }
 
-.input-group > input[type="text"] {
+.input-group>input[type="text"] {
   flex: 1 1 auto;
   width: 1%;
   margin-bottom: 0;
 }
 
-.input-group > input:not(:last-child),
-.input-group > select:not(:last-child) {
+.input-group>input:not(:last-child),
+.input-group>select:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }

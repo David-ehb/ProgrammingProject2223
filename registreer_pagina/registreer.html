@@ -35,24 +35,39 @@
 
             <label for="geboortedatum">Geboortedatum*:</label>
             <input type="date" id="geboortedatum" name="geboortedatum" required><br>
-            <label for="straat">Straatnaam + nr*:</label>
-            <input type="text" id="straat" name="straat" pattern="[a-zA-Z\s]+\s+\d+" required><br>
 
-            <label for="postcode">Postcode*:</label>
+            <div class="textlabel">
+                <label for="postcode">Postcode*:</label>
+                <span id="postcode-error" class="error"></span>
+            </div>
             <input type="text" id="postcode" name="postcode" pattern="[0-9]{4}"
                 title="Postcode moet uit 4 cijfers bestaan" required><br>
-            <span id="postcode-error" class="error"></span>
 
             <label for="gemeente">Gemeente:</label>
-            <select type="text" id="gemeente" name="gemeente"></select> 
+            <select type="text" id="gemeente" name="gemeente"></select>
+
+            <div class="textlabel">
+                <label for="straat">Straatnaam*:</label>
+                <span id="straat-error" class="error"></span>
+            </div>
+            <input type="text" autocomplete="off" list="straat-choices" id="straat" name="straat"
+                required><br>
+            <datalist id="straat-choices">
+            </datalist>
+
+            <div class="textlabel">
+                <label for="huisnummer">Huisnummer*:</label>
+                <span id="huisnummer-error" class="error"></span>
+            </div>
+            <input type="text" id="huisnummer" name="huisnummer" required><br>
 
             <label for="gsm">Gsm-nummer:</label>
-                <div class="input-group">
+            <div class="input-group">
                 <div class="input-group-prepend">
-                  <span class="input-group-text">+32</span>
+                    <span class="input-group-text">+32</span>
                 </div>
-            <input type="text" id="gsm" name="gsm" pattern="\+32\s\d{3}\s\d{2}\s\d{2}" required>
-                </div>
+                <input type="text" id="gsm" name="gsm" pattern="\d{9}" required>
+            </div>
 
             <label for="email">E-mailadres*:</label>
             <input type="email" id="email" name="email" required><br>
@@ -91,7 +106,7 @@
         </div>
     </footer>
 
-<script src="registreer.js"></script>
+    <script src="registreer.js"></script>
 
 </body>
 
