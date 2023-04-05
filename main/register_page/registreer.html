@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registreer</title>
+    <link rel="stylesheet" href="registreer.css">
+</head>
+<body>
+    <header id="banner">
+        
+    <a href="../index.html"><img id="logo" src="../photos/Logohond.png" alt="Your Logo"></a>
+    
+    <nav id="buttons"></nav>
+    <button class="button"> <a href="../login_page/Log_in.html" style="text-decoration:none; color:white;">Log in</a> </button>
+</header>
+
+
+<main>
+
+    <h1>Registreer jezelf</h1>
+    <form>
+        
+
+
+    <label for="voornaam">Voornaam*:</label>
+	<input type="text" id="voornaam" name="voornaam" required><br>
+
+	<label for="achternaam">Achternaam*:</label>
+	<input type="text" id="achternaam" name="achternaam" required><br>
+
+	<label for="geboortedatum">Geboortedatum*:</label>
+	<input type="date" id="geboortedatum" name="geboortedatum" required><br>
+	<label for="straat">Straatnaam + nr*:</label>
+	<input type="text" id="straat" name="straat" pattern="[a-zA-Z\s]+\s+\d+" required><br>
+
+    <label for="postcode">Postcode*:</label>
+	<input type="text" id="postcode" name="postcode" pattern="[0-9]{4}" title="Postcode moet uit 4 cijfers bestaan" required><br>
+    <span id="postcode-error" class="error"></span>
+
+	<label for="gemeente">Gemeente:</label>
+	<input type="text" id="gemeente" name="gemeente"><br>
+
+	<label for="telefoon">Gsm/telefoonnummer:</label>
+	<input type="text" id="telefoon" name="telefoon"><br>
+
+	<label for="email">E-mailadres*:</label>
+	<input type="email" id="email" name="email" required><br>
+
+	<label for="username">Gebruikersnaam*:</label>
+	<input type="text" id="username" name="username" required><br>
+    <div id="username-validation"></div>
+
+	<label for="wachtwoord">Keuze wachtwoord*:</label>
+	<input type="password" id="password" name="password" minlength="8" required><br>
+
+	<label for="herhaal-wachtwoord">Herhaal wachtwoord*:</label>
+	<input type="password" id="confirm_password" name="confirm_password" minleght="8" required><br>
+    <p id="password_error" class="error"></p>
+	<input type="submit" value="Registreren">
+</form>
+
+</main>
+
+
+<!-- Footer with copyright 'teken' and contact link -->
+<footer id="footer">
+    <div id="contact">
+      <a href="#">Contact us</a>
+    </div>
+    <div id="copywrite">
+      &copy; 2023 WatGeWilt
+    </div>
+  </footer>
+
+<script scr="registreer.js"></script>
+    
+</body>
+</html>
