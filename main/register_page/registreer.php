@@ -26,7 +26,7 @@ if ($conn->connect_error) {
 }
 
 // insert the form data into the database
-$sql = "INSERT INTO gebruikers (voornaam, achternaam, geboortedatum, postcode, gemeente, straat, huisnummer, gsm, email, username, password) VALUES ('$voornaam', '$achternaam', '$geboortedatum', '$postcode', '$gemeente', '$straat', '$huisnummer', '$gsm', '$email', '$username', '$password')";
+$sql = "INSERT INTO gebruikers (voornaam, naam, geboortedatum, postcode, gemeente, straat, huisnummer, telefoonnr, email, gebruikersnaam, wachtwoord) VALUES ('$voornaam', '$achternaam', '$geboortedatum', '$postcode', '$gemeente', '$straat', '$huisnummer', '$gsm', '$email', '$username', '$password')";
 
 if ($conn->query($sql) === TRUE) {
   echo "Data inserted successfully";
