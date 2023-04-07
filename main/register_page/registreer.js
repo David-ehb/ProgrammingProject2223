@@ -1,3 +1,15 @@
+fetch('https://dt5.ehb.be/path/to/retrieve_data.php')
+  .then(response => response.json())
+  .then(data => {
+    // Process retrieved data
+    console.log(data);
+  })
+  .catch(error => {
+    // Handle error
+    console.error(error);
+  });
+
+
 // Returns a function, that, as long as it continues to be invoked, will not
 // be triggered. The function will be called after it stops being called for
 // `wait` milliseconds.
@@ -49,26 +61,24 @@ const usernameInput = document.getElementById("username");
 const usernameValidation = document.getElementById("username-validation");
 
 // Event listener voor het controleren van de gebruikersnaam
-usernameInput.addEventListener("input", checkUsername);
-
-// Functie om de gebruikersnaam te controleren
-function checkUsername() {
-  // Stuur een aanvraag naar de server om te controleren of de gebruikersnaam al bestaat
-  // In dit voorbeeld wordt gebruik gemaakt van een mockup API endpoint
-  fetch(`https://example.com/api/username-exists?username=${usernameInput.value}`)
+usernameInput.addEventListener("input", function(){
+// Get the entered username
+const username = usernameInput.value.trim();
+fetch("check_username.php?username=" + encodeURIComponent(username))
     .then(response => response.json())
     .then(data => {
       if (data.exists) {
+        // Display an error message if the username already exists
         usernameValidation.textContent = "Deze gebruikersnaam is al in gebruik.";
       } else {
+        // Clear the error message if the username doesn't exist
         usernameValidation.textContent = "";
       }
     })
     .catch(error => {
-      usernameValidation.textContent = "Er is een fout opgetreden bij het controleren van de gebruikersnaam.";
+      console.error(error);
     });
-}
-
+});
 
 const successPopup = document.querySelector('#success-popup');
 
@@ -87,7 +97,6 @@ const gsmInput = document.getElementById("gsm");
 const gsmError = document.getElementById("gsm-error");
 
 // create a regex for belgium celphone number without spaces
-// code know
 form.addEventListener('submit', (event) => {
   const gsmPattern = /(\d{9})?/;
   if (!gsmPattern.test(gsmInput.value)) {
