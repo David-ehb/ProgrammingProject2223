@@ -2,16 +2,16 @@
 
 // get the form data
 $voornaam = $_POST['voornaam'];
-$achternaam = $_POST['achternaam'];
+$achternaam = $_POST['naam'];
 $geboortedatum = $_POST['geboortedatum'];
 $postcode = $_POST['postcode'];
 $gemeente = $_POST['gemeente'];
 $straat = $_POST['straat'];
 $huisnummer = $_POST['huisnummer'];
-$gsm = $_POST['gsm'];
+$gsm = $_POST['telefoonnr'];
 $email = $_POST['email'];
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = $_POST['gebruikersnaam'];
+$password = $_POST['wachtwoord'];
 $servername = "dt5.ehb.be";
 $username = "2223PROGPROJGR1";
 $password = "NsEo8m";
@@ -35,7 +35,7 @@ if ($conn->query($sql) === TRUE) {
 }
 
 // Retrieve data from database
-$sql = "SELECT * FROM yourtable";
+$sql = "SELECT * FROM gebruikers";
 $result = $conn->query($sql);
 
 
