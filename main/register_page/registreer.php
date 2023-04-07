@@ -1,4 +1,17 @@
 <?php
+
+// get the form data
+$voornaam = $_POST['voornaam'];
+$achternaam = $_POST['achternaam'];
+$geboortedatum = $_POST['geboortedatum'];
+$postcode = $_POST['postcode'];
+$gemeente = $_POST['gemeente'];
+$straat = $_POST['straat'];
+$huisnummer = $_POST['huisnummer'];
+$gsm = $_POST['gsm'];
+$email = $_POST['email'];
+$username = $_POST['username'];
+$password = $_POST['password'];
 $servername = "dt5.ehb.be";
 $username = "2223PROGPROJGR1";
 $password = "NsEo8m";
@@ -12,9 +25,19 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
+// insert the form data into the database
+$sql = "INSERT INTO gebruikers (voornaam, achternaam, geboortedatum, postcode, gemeente, straat, huisnummer, gsm, email, username, password) VALUES ('$voornaam', '$achternaam', '$geboortedatum', '$postcode', '$gemeente', '$straat', '$huisnummer', '$gsm', '$email', '$username', '$password')";
+
+if ($conn->query($sql) === TRUE) {
+  echo "Data inserted successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
 // Retrieve data from database
 $sql = "SELECT * FROM yourtable";
 $result = $conn->query($sql);
+
 
 // Convert result to JSON format
 $data = array();
