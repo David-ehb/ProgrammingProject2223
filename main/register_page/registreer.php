@@ -1,17 +1,20 @@
 <?php
 
+directions = json_decode($_POST['json']);
+var_dump(directions);
+
 // get the form data
-$voornaam = $_POST['voornaam'];
-$achternaam = $_POST['naam'];
-$geboortedatum = $_POST['geboortedatum'];
-$postcode = $_POST['postcode'];
-$gemeente = $_POST['gemeente'];
-$straat = $_POST['straat'];
-$huisnummer = $_POST['huisnummer'];
-$gsm = $_POST['gsm'];
-$email = $_POST['email'];
-$username = $_POST['username'];
-$password = $_POST['wachtwoord'];
+// $voornaam = $_POST['voornaam'];
+// $achternaam = $_POST['naam'];
+// $geboortedatum = $_POST['geboortedatum'];
+// $postcode = $_POST['postcode'];
+// $gemeente = $_POST['gemeente'];
+// $straat = $_POST['straat'];
+// $huisnummer = $_POST['huisnummer'];
+// $gsm = $_POST['gsm'];
+// $email = $_POST['email'];
+// $username = $_POST['username'];
+// $password = $_POST['wachtwoord'];
 $servername = "dt5.ehb.be";
 $username = "2223PROGPROJGR1";
 $password = "NsEo8m";

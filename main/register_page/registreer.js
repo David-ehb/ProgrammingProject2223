@@ -1,14 +1,3 @@
-fetch('https://dt5.ehb.be/path/to/retrieve_data.php')
-  .then(response => response.json())
-  .then(data => {
-    // Process retrieved data
-    console.log(data);
-  })
-  .catch(error => {
-    // Handle error
-    console.error(error);
-  });
-
 // Returns a function, that, as long as it continues to be invoked, will not
 // be triggered. The function will be called after it stops being called for
 // `wait` milliseconds.
@@ -31,35 +20,34 @@ const straatError = document.querySelector('#straat-error');
 const huisnummerInput = document.querySelector('#huisnummer');
 const huisnummerError = document.querySelector('#huisnummer-error');
 
+// form.addEventListener("submit", (event) => {
+//   event.preventDefault(); // prevent the form from submitting normally
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault(); // prevent the form from submitting normally
+//   // get the form data
+//   const formData = new FormData(form);
 
-  // get the form data
-  const formData = new FormData(form);
+//   // send the form data to the server using AJAX
+//   const xhr = new XMLHttpRequest();
+//   xhr.open("POST", "http://mijnserver/registreer/gebruiker");
+//   xhr.send(formData);
 
-  // send the form data to the server using AJAX
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", "insert.php"); // replace "insert.php" with the name of your PHP file
-  xhr.send(formData);
-
-  // handle the server response
-  xhr.onload = function () {
-    if (xhr.status === 200) {
-      // show a success message
-      const successPopup = document.getElementById("success-popup");
-      successPopup.style.display = "block";
-    } else {
-      // show an error message
-      alert("Oops! Something went wrong.");
-    }
-  };
-});
+//   // handle the server response
+//   xhr.onload = function () {
+//     if (xhr.status === 200) {
+//       // show a success message
+//       const successPopup = document.getElementById("success-popup");
+//       successPopup.style.display = "block";
+//     } else {
+//       // show an error message
+//       alert("Oops! Something went wrong.");
+//     }
+//   };
+// });
 
 form.addEventListener('submit', (event) => {
-  if (postcodeInput.validity.patternMismatch) {
-    event.preventDefault();
-    postcodeError.textContent = 'Postcode moet uit exact 4 cijfers bestaan.';
+if (postcodeInput.validity.patternMismatch) {
+ event.preventDefault();
+postcodeError.textContent = 'Postcode moet uit exact 4 cijfers bestaan.';
   } else {
     postcodeError.textContent = '';
   }
@@ -84,10 +72,10 @@ const usernameInput = document.getElementById("username");
 const usernameValidation = document.getElementById("username-validation");
 
 // Event listener voor het controleren van de gebruikersnaam
-usernameInput.addEventListener("input", function(){
-// Get the entered username
-const username = usernameInput.value.trim();
-fetch("check_username.php?username=" + encodeURIComponent(username))
+usernameInput.addEventListener("input", function () {
+  // Get the entered username
+  const username = usernameInput.value.trim();
+  fetch("check_username.php?username=" + encodeURIComponent(username))
     .then(response => response.json())
     .then(data => {
       if (data.exists) {
@@ -179,7 +167,7 @@ validateStreet = async () => {
             straatSelect.appendChild(option);
           }
         }
-        straatError.textContent = "";  
+        straatError.textContent = "";
       } else {
         straatError.textContent = 'Straatnaam bestaat niet.';
       }
