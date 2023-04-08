@@ -1,5 +1,10 @@
 <?php
 
+$servername = "dt5.ehb.be";
+$username = "2223PROGPROJGR1";
+$password = "NsEo8m";
+$dbname = "2223PROGPROJGR1";
+
 // get the form data
 $voornaam = $_POST['voornaam'];
 $achternaam = $_POST['naam'];
