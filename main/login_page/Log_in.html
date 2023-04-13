@@ -10,13 +10,13 @@
 </head>
 
 <body>
-  <!-- Dit gebeurd er als je op de 'log in' knop duwt. -->
+  <!-- Dit gebeurt er als je op de 'log in' knop duwt. -->
   <div id="block_form">
     <img src="../photos/Logohondje.png" alt="">
     <h1>Log In</h1> <br>
     <form action="" method="post">
-      <input type="email" id="email" name="username" placeholder="E-mail of gebruikersnaam" required><br>
-      <input type="password" id="password" name="password" placeholder="wachtwoord" required><br><br>
+      <input type="email" id="email" name="username" placeholder="E-mail of gebruikersnaam"><br>
+      <input type="password" id="password" name="password" placeholder="wachtwoord"><br><br>
       <input type="submit" value="Log in"> <br> <br>
       <input type="checkbox" name="remember" id="remember">
       <label for="remember">Onthoud mijn gegevens</label>
@@ -24,6 +24,7 @@
     <p>Heb je nog geen account?</p>
     <a href="../register_page/registreer.html">Registreer</a> <!--Hier komt de link naar de registreer pagina.-->
   </div>
+  <p id="error"></p>
 
   <!-- Footer with copyright 'teken' and contact link -->
   <footer id="footer">
@@ -31,9 +32,10 @@
       <a href="#">Contact us</a>
     </div>
     <div id="copywrite">
-      &copy; 2023 WatGeWilt
+      &copy; 2023 Poppup
     </div>
   </footer>
+  <script src="Backend/log_in_backend.js"></script>
   <script src="log_in.js"></script>
 </body>
 </html>

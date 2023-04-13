@@ -1,54 +1,46 @@
 'use strict'
-import express from 'express';
-import session from 'express-session';
-import { createConnection, escape } from 'mysql';
 
-const app = express();
+  // ophalen van de gegeven uit de dom 
+  const loginForm = document.querySelector('form');
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
 
-// Set up session middleware
-app.use(session({
-  secret: 'RandomStringDieWeGeheimMoetenHouden',
-  resave: false,
-  saveUninitialized: true
-}));
-
-// Create connection to database
-const connection = createConnection({
-  host: 'localhost',
-  user: '2223PROGPROJGR1',
-  password: 'NsEo8m',
-  database: '2223PROGPROJGR1',
-});
-
-// Handle login form submission
-app.post('http://127.0.0.1:5500/log%20in%20pagina/Log_in.html', (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-
-  // Validate username and password
-  if (!username || !password) {
-    res.status(400).send('Ongeldige gebruikersnaam of wachtwoord');
-    return;
+  loginForm.addEventListener('submit', (event) => {
+  // Checken of username en paswoord niet leeg zijn
+  //To Do: https://popper.js.org/ voor tooltip om aan te geven dat velden niet leeg mogen zijn.
+  // attribuut required kan gebruikt worden in geval het niet lukt met popper
+  if (email.trim() === '') {
+    alert('Geef je gebruikersnaam in');
+    event.preventDefault(); 
   }
-
-  // Query database to check if user exists
-  const query = `SELECT * FROM gebruikers WHERE email = ${escape(username)} AND wachtwoord = ${escape(password)}`;
-  connection.query(query, (error, results) => {
-    if (error) throw error;
-
-    if (results.length === 1) {
-      // User is authenticated, create session
-      req.session.userId = results[0].id;
-      res.redirect('Log_in.html');
+  if (password.trim() === '') {
+    alert('Geef je wachtwoord in');
+    event.preventDefault(); 
+  }
+  fetch('/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username,
+      password
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // Naar waar moet hier geredirect worden? aparte pagin of naar home
+      window.location.href = 'index.html';
     } else {
-      // Invalid username or password
-      res.status(401).send('Ongeldige gebruikersnaam of wachtwoord');
+      // error tonen
+      document.querySelector('error').textContent = data.message;
     }
+  })
+  .catch(error => {
+    console.error(error);
+    // Error tonen
+    document.querySelector('error').textContent = 'An error occurred. Please try again later.';
   });
-});
-
-// Start server
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
 });
 
