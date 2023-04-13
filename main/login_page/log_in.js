@@ -17,7 +17,6 @@
   //   alert('Geef je wachtwoord in');
   //   event.preventDefault(); 
   // }
-  event.preventDefault();
   fetch('/login', {
     method: 'POST',
     headers: {
