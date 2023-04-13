@@ -1,12 +1,14 @@
 //Code voor opzetten van de databank connectie
-'use strict';
+
 const mysql = require('mysql2');
+const express = require('express');
+const app = express();
 
 //To Do: checken hoe login gegevens verstopt kunnen worden.
 //1. Environment variables
 //2. Encryption modules
 //3. Config files met Jason
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
   host: 'dt5.ehb.be',
   port: '3306',
   user: '2223PROGPROJGR1',
@@ -15,7 +17,7 @@ const connection = mysql.createConnection({
 });
 
 // connect naar de database
-connection.connect((err) => {
+pool.getConnection((err, connection) => {
   if (err) {
     console.error('Error bij connecteren naar database: ' + err.stack);
     return;
@@ -24,7 +26,7 @@ connection.connect((err) => {
   console.log('Geconnecteerd naar db met id ' + connection.threadId);
 });
 // query testen
-connection.query('SELECT * FROM deelnemers', (err, results, fields) => {
+pool.query('SELECT * FROM gebruikers', (err, results, fields) => {
     if (err) {
       console.error('Error bij uitvoeren van query: ' + err.stack);
       return;
@@ -32,23 +34,26 @@ connection.query('SELECT * FROM deelnemers', (err, results, fields) => {
     console.log('Query resultaten: ', results);
   });
 
-const express = require('express');
-const app = express();
+
 
 // Parse JSON
 app.use(express.json());
 
 // Afhandelen van login request
 app.post('/login', async (req, res) => {
+    console.log('login request ontvangen');
   try {
     // Gebruikers input ophalen
-    const username = req.body.username;
+    const email = req.body.email;
+    //console.log(email);
     const password = req.body.password;
+    //console.log(password);
 
     // Database bevragen voor overeenkomstige login
-    const [rows] = await pool.execute(
-      'SELECT * FROM deelnemers WHERE (username = ?) AND password = ?',
-      [username, password]
+    const [rows] = await pool.promise().execute(
+      'SELECT * FROM gebruikers WHERE email = ? AND wachtwoord = ?',
+      [email || null, password || null],
+      { types: ['string', 'string'] }
     );
 
     // Check indien de user bestaat en paswoord correct is
