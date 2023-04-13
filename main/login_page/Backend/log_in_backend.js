@@ -51,7 +51,7 @@ app.post('/login', async (req, res) => {
 
     // Database bevragen voor overeenkomstige login
     const [rows] = await pool.promise().execute(
-      'SELECT * FROM gebruikers WHERE email = ? AND wachtwoord = ?',
+      'SELECT * FROM gebruikers WHERE (email = ? AND wachtwoord = ?)',
       [email || null, password || null],
       { types: ['string', 'string'] }
     );
