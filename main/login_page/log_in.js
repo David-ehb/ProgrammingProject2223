@@ -1,4 +1,4 @@
-
+'use strict';
 
   // ophalen van de gegeven uit de dom 
   const loginForm = document.querySelector('form');
