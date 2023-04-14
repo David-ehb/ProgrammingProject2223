@@ -16,3 +16,18 @@ content-type: application/json
     "password": "W@chtwoord2"
 }
 
+###
+
+GET http://localhost:3000/gebruikers HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET http://localhost:3000/emails/gebruiker6@hotmail.com HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET http://localhost:3000/emails/test HTTP/1.1
+Content-Type: application/json
+
