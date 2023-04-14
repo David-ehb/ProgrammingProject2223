@@ -1,41 +1,12 @@
 'use strict';
 
 //Code voor opzetten van de databank connectie
+const pool = require('./db/db_connection.js');
+const gebruikerModel = require('./models/gebruiker_model.js');
 
 const mysql = require('mysql2');
 const express = require('express');
 const app = express();
-
-//To Do: checken hoe login gegevens verstopt kunnen worden.
-//1. Environment variables
-//2. Encryption modules
-//3. Config files met Jason
-const pool = mysql.createPool({
-  host: 'dt5.ehb.be',
-  port: '3306',
-  user: '2223PROGPROJGR1',
-  password: 'NsEo8m',
-  database: '2223PROGPROJGR1'
-});
-
-// connect naar de database
-pool.getConnection((err, connection) => {
-  if (err) {
-    console.error('Error bij connecteren naar database: ' + err.stack);
-    return;
-  }
-  //console loggen om te kijken of connectie gebeurt
-  console.log('Geconnecteerd naar db met id ' + connection.threadId);
-});
-// query testen
-pool.query('SELECT * FROM gebruikers', (err, results, fields) => {
-    if (err) {
-      console.error('Error bij uitvoeren van query: ' + err.stack);
-      return;
-    }
-    console.log('Query resultaten: ', results);
-  });
-
 
 
 // Parse JSON
@@ -75,6 +46,20 @@ app.post('/login', async (req, res) => {
     // Sturen error naar frontend
     res.json({ success: false, message: 'An error occurred. Please try again later.' });
   }
+});
+
+// Geeft alle gebruikers terug
+app.get('/gebruikers', (req, res) => {
+  gebruikerModel.get_all()
+      .then(function (value) { res.json(value) })
+      .catch(function (error) { res.json(error) });
+});
+
+// Check of email al bestaat
+app.get('/emails/:email', (req, res) => {
+  gebruikerModel.check_email(req.params.email)
+      .then(function (value) { res.json(value) })
+      .catch(function (error) { res.json(error) });
 });
 
 //console loggen om te checken dat de server luistert
