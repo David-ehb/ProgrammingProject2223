@@ -3,6 +3,16 @@ content-type: application/json
 
 {
     "email": "test",
-    "passwoord": "test"
+    "password": "test"
+}
+
+###
+
+POST http://localhost:3000/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "gebruiker2@hotmail.com",
+    "password": "W@chtwoord2"
 }
 
