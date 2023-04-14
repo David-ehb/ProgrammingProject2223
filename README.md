@@ -7,7 +7,7 @@
 
 ```shell
 # gaat naar backend directory
-cd backend
+cd backend of rechtermuisklik "open in integrated terminal"
 # installeer nodemon + packages gedefinieerd in package.json
 npm install nodemon
 ```
@@ -21,7 +21,8 @@ npm install nodemon
 # gaat naar backend directory
 cd backend
 # start nodemon en lanceer log_in_backend.js
-npm start
+npm start - node log_in_backend.js
+=> console.logs zijn aangebracht om in de terminal te zien of json niet leeg is en SQL commands werken
 ```
 
 ## API testen met vscode
