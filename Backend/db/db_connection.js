@@ -1,5 +1,9 @@
 const mysql = require('mysql2');
 
+//To Do: checken hoe login gegevens verstopt kunnen worden.
+//1. Environment variables
+//2. Encryption modules
+//3. Config files met Jason
 let pool = mysql.createPool({
     host: 'dt5.ehb.be',
     port: '3306',
