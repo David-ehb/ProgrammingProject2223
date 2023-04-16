@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registreer</title>
+    <link rel="stylesheet" href="registreer.css">
+
+</head>
+
+<body>
+    <header id="banner">
+
+        <a href="../index.html"><img id="logo" src="../photos/Logohond.png" alt="Your Logo"></a>
+
+        <nav id="buttons"></nav>
+        <button class="button"> <a href="../login_page/Log_in.html" style="text-decoration:none; color:white;">Log
+                in</a> </button>
+    </header>
+
+
+    <main>
+
+        <h1>Registreer jezelf</h1>
+
+        <form id="registration-form">
+
+            <label for="voornaam">Voornaam*:</label>
+            <input type="text" id="voornaam" name="voornaam" required><br>
+
+            <label for="achternaam">Achternaam*:</label>
+            <input type="text" id="achternaam" name="achternaam" required><br>
+
+            <label for="geboortedatum">Geboortedatum*:</label>
+            <input type="date" id="geboortedatum" name="geboortedatum" required><br>
+
+            <div class="textlabel">
+                <label for="postcode">Postcode*:</label>
+                <span id="postcode-error" class="error"></span>
+            </div>
+            <input type="text" id="postcode" name="postcode" pattern="[0-9]{4}"
+                title="Postcode moet uit 4 cijfers bestaan" required><br>
+
+            <label for="gemeente">Gemeente:</label>
+            <select type="text" id="gemeente" name="gemeente"></select>
+
+            <div class="textlabel">
+                <label for="straat">Straatnaam*:</label>
+                <span id="straat-error" class="error"></span>
+            </div>
+            <input type="text" autocomplete="off" list="straat-choices" id="straat" name="straat"
+                required><br>
+            <datalist id="straat-choices">
+            </datalist>
+
+            <div class="textlabel">
+                <label for="huisnummer">Huisnummer*:</label>
+                <span id="huisnummer-error" class="error"></span>
+            </div>
+            <input type="text" id="huisnummer" name="huisnummer" required><br>
+
+            <label for="gsm">Gsm-nummer:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">+32</span>
+                </div>
+                <input type="text" id="gsm" name="gsm" pattern="\d{9}" required>
+            </div>
+
+            <label for="username">Gebruikersnaam*:</label>
+        <input type="text" id="username" name="username" required><br>
+        <div id="username-validation"></div>
+
+            <p style="font-size: smaller; font-family: Helvetica Neue, Helvetica, Arial, sans-serif"><strong>*
+                    Verplichte velden</strong></p>
+                    <input type="submit" value="Registreren">
+        </form>
+
+        <div id="success-popup">
+            <p style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif">Uw profiel is succesvol aangemaakt!</p>
+        </div>
+
+
+    </main>
+
+
+    <!-- Footer with copyright 'teken' and contact link -->
+    <footer id="footer">
+        <div id="contact">
+            <a href="#">Contact us</a>
+        </div>
+        <div id="copywrite">
+            &copy; 2023 WatGeWilt
+        </div>
+    </footer>
+
+    <script src="registreer.js"></script>
+
+</body>
+
+</html>

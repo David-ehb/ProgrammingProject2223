@@ -6,17 +6,22 @@ const gebruikerModel = require('./models/gebruiker_model.js');
 
 const mysql = require('mysql2');
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
+// Allow CORS
+app.use(cors({
+  origin: '*'
+}));
 
 // Parse JSON
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimit: 100000000000}));
+app.use(bodyParser.urlencoded({ limit: '5000mb', extended: true, parameterLimit: 100000000000 }));
 app.use(express.json());
 
 // Afhandelen van login request
 app.post('/login', async (req, res) => {
-    console.log('login request ontvangen');
+  console.log('login request ontvangen');
   try {
     // Gebruikers input ophalen
     const email = req.body.email;
@@ -51,20 +56,32 @@ app.post('/login', async (req, res) => {
 // Geeft alle gebruikers terug
 app.get('/gebruikers', (req, res) => {
   gebruikerModel.get_all()
-      .then(function (value) { res.json(value) })
-      .catch(function (error) { res.json(error) });
+    .then(function (value) { res.json(value) })
+    .catch(function (error) { res.json(error) });
 });
 
 // Check of email al bestaat
 app.get('/emails/:email', (req, res) => {
   gebruikerModel.check_email(req.params.email)
-      .then(function (value) { res.json(value) })
-      .catch(function (error) { res.json(error) });
+    .then(function (value) { res.json(value) })
+    .catch(function (error) { res.json(error) });
+});
+
+// Maakt een nieuwe gebruiker aan
+app.post('/registreer', (req, res) => {
+  gebruikerModel.create_nieuwe_gebruiker(req.body.email, req.body.wachtwoord)
+    .then(function (value) {
+      console.log("Registreer resultaat: " + value);
+      if (value == true) {
+        res.json({ success: true });
+      } else {
+        res.json({ success: false, message: 'Email bestaat al' });
+      }
+    })
+    .catch(function (error) { res.json(error) });
 });
 
 //console loggen om te checken dat de server luistert
 app.listen(3000, () => {
   console.log('Server luistert op poort 3000');
 });
-
-

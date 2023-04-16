@@ -24,10 +24,17 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3000/emails/gebruiker6@hotmail.com HTTP/1.1
-Content-Type: application/json
 
 ###
 
 GET http://localhost:3000/emails/test HTTP/1.1
-Content-Type: application/json
 
+###
+
+POST http://localhost:3000/registreer HTTP/1.1
+content-type: application/json
+
+{
+    "email": "gebruiker2@hotmail.com",
+    "wachtwoord": "W@chtwoord2"
+}
