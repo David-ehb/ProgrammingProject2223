@@ -1,4 +1,5 @@
 import * as Registratie from "./registratie.js";
+import * as AdresHelper from "./adres_helper.js";
 
 // Returns a function, that, as long as it continues to be invoked, will not
 // be triggered. The function will be called after it stops being called for
@@ -124,52 +125,54 @@ form.addEventListener('submit', (event) => {
 
 const gemeenteSelect = document.getElementById("gemeente");
 
-validatePostalCode = async () => {
+let validatePostalCode = async () => {
   if (postcodeInput.value.length == 4) {
     try {
-      const response = await fetch(`https://api.basisregisters.vlaanderen.be/v2/postinfo/${postcodeInput.value}`);
-      const data = await response.json();
-      gemeenteSelect.innerHTML = "";
-      for (var i = 0; i < data.postnamen.length; ++i) {
-        let result = data.postnamen[i].geografischeNaam;
-        if (result !== undefined) {
+      const codes = await AdresHelper.geeftPostcodes(postcodeInput.value);
+      if (codes.length > 0) {
+        for (var i = 0; i < codes.length; ++i) {
+          const gemeente = codes[i];
           const option = document.createElement("option");
-          option.value = result.spelling;
-          option.text = result.spelling;
+          option.value = gemeente;
+          option.text = gemeente;
           gemeenteSelect.appendChild(option);
         }
+        // Terugleegmaken van de error message indien de error message nog steeds zichtbaar is
+        postcodeError.textContent = "";
+      } else {
+        postcodeError.textContent = 'Postcode bestaat niet.';
+        gemeenteSelect.innerHTML = "";
       }
-      straatError.textContent = "";
-    } catch {
-      postcodeError.textContent = 'Postcode bestaat niet.';
+    } catch (error) {
+      console.log(error);
+      straatError.textContent = 'Straatnaam bestaat niet.';
     }
   } else {
-    postcodeError.textContent = '';
+    postcodeError.textContent = 'Postcode moet uit exact 4 cijfers bestaan.';
   }
 };
 
 postcodeInput.addEventListener("input", debounce(validatePostalCode, 500));
 
-const straatSelect = document.getElementById("straat-choices");
 
-validateStreet = async () => {
+let validateStreet = async () => {
   if (straatInput.value.length > 0 && postcodeInput.value.length == 4 && postcodeError.textContent == "") {
     try {
-      const limit = 10;
-      const url = `https://api.basisregisters.vlaanderen.be/v2/adresmatch?postcode=${postcodeInput.value}&limit=${limit}&straatnaam=${straatInput.value}`;
-      const response = await fetch(url);
-      const data = await response.json();
-      straatSelect.innerHTML = "";
-      if (data.adresMatches[0].straatnaam !== undefined) {
-        for (var i = 0; i < data.adresMatches.length; ++i) {
-          let result = data.adresMatches[i].straatnaam;
-          if (result !== undefined && result.straatnaam.geografischeNaam.spelling !== straatInput.value) {
+      const data = await AdresHelper.geeftStraatnamen(postcodeInput.value, straatInput.value);
+      if (data.length > 0) {
+        const straatSelect = document.getElementById("straat-choices");
+        straatSelect.innerHTML = "";
+        for (var i = 0; i < data.length; ++i) {
+          const straat = data[i];
+          // Voorkomt dat de straatnaam dubbel wordt toegevoegd aan de lijst
+          if (straat !== undefined && straat !== straatInput.value) {
             const option = document.createElement("option");
-            option.value = result.straatnaam.geografischeNaam.spelling;
-            option.text = result.straatnaam.geografischeNaam.spelling;
+            option.value = straat;
+            option.text = straat;
             straatSelect.appendChild(option);
           }
         }
+        // Terugleegmaken van de error message indien de error message nog steeds zichtbaar is
         straatError.textContent = "";
       } else {
         straatError.textContent = 'Straatnaam bestaat niet.';
@@ -187,14 +190,11 @@ validateStreet = async () => {
 
 straatInput.addEventListener("input", debounce(validateStreet, 500));
 
-validateHuisNummber = async () => {
+let validateHuisNummber = async () => {
   if (postcodeError.textContent == "" && straatError.textContent == "" && straatInput.value.length > 0 && postcodeInput.value.length == 4 && huisnummerInput.value.length > 0) {
     try {
-      const limit = 10;
-      const url = `https://api.basisregisters.vlaanderen.be/v2/adresmatch?postcode=${postcodeInput.value}&limit=${limit}&straatnaam=${straatInput.value}&huisnummer=${huisnummerInput.value}`;
-      const response = await fetch(url);
-      const data = await response.json();
-      if (data.adresMatches[0].volledigAdres !== undefined) {
+      const bestaatAdres = await AdresHelper.bestaatAdres(postcodeInput.value, straatInput.value, huisnummerInput.value);
+      if (bestaatAdres) {
         huisnummerError.textContent = "";
       } else {
         huisnummerError.textContent = 'Huisnummer bestaat niet.';
