@@ -54,32 +54,43 @@ app.post('/login', async (req, res) => {
 });
 
 // Geeft alle gebruikers terug
-app.get('/gebruikers', (req, res) => {
-  gebruikerModel.get_all()
-    .then(function (value) { res.json(value) })
-    .catch(function (error) { res.json(error) });
+app.get('/gebruikers', async (req, res) => {
+  try {
+    let gebruikers = await gebruikerModel.get_all()
+    res.json(gebruikers)
+  } catch (error) {
+    console.error(error);
+    res.json({ success: false, message: error })
+  }
 });
 
 // Check of email al bestaat
-app.get('/emails/:email', (req, res) => {
-  gebruikerModel.check_email(req.params.email)
-    .then(function (value) { res.json(value) })
-    .catch(function (error) { res.json(error) });
+app.get('/emails/:email', async (req, res) => {
+  try {
+    let bestaat_email = await gebruikerModel.bestaat_email(req.params.email)
+    res.json(bestaat_email)
+  } catch (error) {
+    console.error(error);
+    res.json({ success: false, message: error })
+  }
 });
 
 // Maakt een nieuwe gebruiker aan
-app.post('/registreer', (req, res) => {
-  gebruikerModel.create_nieuwe_gebruiker(req.body.email, req.body.wachtwoord)
-    .then(function (value) {
-      console.log("Registreer resultaat: " + value);
-      if (value == true) {
-        res.json({ success: true });
-      } else {
-        res.json({ success: false, message: 'Email bestaat al' });
-      }
-    })
-    .catch(function (error) { res.json(error) });
+app.post('/registreer', async (req, res) => {
+  let is_gebruiker_aangemaakt = await gebruikerModel.create_nieuwe_gebruiker(req.body.email, req.body.wachtwoord)
+  try {
+    console.log("Registreer resultaat: " + is_gebruiker_aangemaakt);
+    if (is_gebruiker_aangemaakt) {
+      res.json({ success: true });
+    } else {
+      res.json({ success: false, message: 'Email bestaat al' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.json({ success: false, message: error })
+  }
 });
+;
 
 //console loggen om te checken dat de server luistert
 app.listen(3000, () => {
