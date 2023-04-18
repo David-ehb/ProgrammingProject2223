@@ -1,0 +1,138 @@
+body {
+    background-image: url('../../photos/achtergrond.png');
+    /* grid opmaken */
+    display: grid;
+    grid-template-areas: 
+        "header header header"
+        "nav main ads"
+        "footer footer footer";
+    grid-template-rows: 80px 1fr 70px;  
+    grid-template-columns: 20% 1fr 15%;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    height: 100vh;
+    margin: 0;
+    }  
+header, footer, main, nav, div {
+    padding: 1.2em;
+
+}
+
+
+#main-event { 
+    grid-area: main; 
+    align-items: center;    
+    }
+#mainNav { 
+    grid-area: nav; 
+    }
+#siteAds { 
+    grid-area: ads; 
+    } 
+    /* Stack the layout on small devices/viewports. */
+@media all and (max-width: 575px) {
+    body { 
+        grid-template-areas: 
+        "header"
+        "main"
+        "ads"
+        "nav"
+        "footer";
+        grid-template-rows: 80px 1fr 70px 1fr 70px;  
+        grid-template-columns: 1fr;
+    }
+}
+  
+  
+  /* Stijl van de header*/
+  #banner {
+    grid-area: header;
+    background-color: #333;
+    color: white;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  
+  #logo {
+    height: 70px;
+  }
+  
+  #buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 10px 4px 10px;
+    /*afstand tussen buttons*/
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .button:hover {
+    background-color: #3e8e41;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+  }
+  
+  a:hover{
+    font-weight: bold;
+  }
+
+  #footer {
+    grid-area: footer;
+    position: fixed;
+    bottom: 0;
+    background-color: #333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: system-ui, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  #footer div {
+    margin: 10px;
+  }
+  
+  #copywrite {
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  #contact {
+    align-self: flex-end;
+  }
+  
+  #contact a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  #contact a:hover {
+    font-weight: 800;
+    color: beige;
+  }
+  
+  
+  /*Deze span is enkel voor jullie om uit te leggen wat we verwachten op de pagina. Bij launch verwijderen!*/
+  span {
+    color: blue;
+    font-size: 25px;
+  }

@@ -1,27 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=n">
+    <!-- Bootstrap CSS
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="new_event.css">
+    <script src="new_event.js"></script>
     <title>Nieuw evenement aanmaken</title>
 </head>
-<body>
-    <h1>Nieuw evenement aanmaken</h1>
-    <p>Op deze pagina kan je een evenement aanmaken</p>
 
-    <form action="new_event.php" method="post">
-       <label>Naam <br>
-        <input type="text" name="name" placeholder="Naam evenement" id="event_name">
-       </label> 
-       <label> datum <br>
-        <input type="date" name="event_date" id="">
-       </label>
-       <label> omschriving: <br>
-        <textarea name="omschrijving" id="" cols="30" rows="10" maxlength="255"></textarea>
-       </label>
-       <button type="submit"></button>
-    </form>
-    
+<body>
+        <header id="banner">
+        <a href="../../index.html"> <img id="logo" src="../../photos/Logohond.png" alt="Your Logo"></a>
+        <nav id="buttons">
+          <button class="button"> <a href="../../register_page/registreer.html" style="text-decoration:none; color:white;">Registreer</a> </button>
+          <button class="button"> <a href="../../login_page/Log_in.html" style="text-decoration:none; color:white;">Log in</a> </button>
+          <button class="button"> <a href="../events.html" style="text-decoration:none; color:white;">Evenementen</a> </button>
+        </nav>
+      </header>
+    <main id="main-event">
+        <h1>Nieuw evenement aanmaken</h1>
+        <p>Op deze pagina kan je een evenement aanmaken</p>
+        <br>
+
+        <form id="new-event">
+                <label for="event-name" class="">Naam</label>
+                <input type="text" class="" name="name" placeholder="Naam evenement" id="event-name"
+                    required>
+
+                <label for="event-date" class="" required>Datum</label>
+                <input type="date" class="" name="event_date" id="event-date" required>
+
+                <label for="event-time">starttijd: </label>
+                <input type="time" class="" name="event_time" id="event-time" required>
+                
+
+            <fieldset class="">
+
+                        <legend class="col- col-sm-5">discipline</legend>
+
+
+                                <input type="checkbox" class="form-check-input" name="canicross" value="canicross"
+                                    id="canicross">
+                                <label class="form-check-label" for="canicross" value="">canicross</label>
+
+                                <input type="checkbox" class="form-check-input" name="agility" value="agility"
+                                    id="agility">
+                                <label class="form-check-label" for="agility">agility</label>
+
+                                <input type="checkbox" class="form-check-input" name="rally" value="rally" id="rally">
+
+                                <label class="form-check-label" for="rally">rally</label>
+
+                                <input type="checkbox" class="form-check-input" name="hondenwandeling"
+                                    value="hondenwandeling" id="hondenwandeling">
+                                <label class="form-check-label" for="hondenwandeling">hondenwandeling</label>
+
+                                <input type="checkbox" class="form-check-input" name="other" value="other" id="other">
+                                <label class="form-check-label" for="other">hondenwandeling</label>
+            </fieldset>
+            
+            <div class="textlabel">
+                <label for="postcode">Postcode*:</label>
+                <p id="postcode-error" class="error"></p> 
+            </div>
+            <input type="number" id="postcode" name="postcode" pattern="[0-9]{4}"
+                title="Postcode moet uit 4 cijfers bestaan" required><br>
+
+            <label for="gemeente">Gemeente:</label>
+            <select type="text" id="gemeente" name="gemeente"></select>
+
+            <div class="textlabel">
+                <label for="straat">Straatnaam*:</label>
+                <span id="straat-error" class="error"></span>
+            </div>
+            <input type="text" autocomplete="off" list="straat-choices" id="straat" name="straat"
+                required><br>
+            <datalist id="straat-choices">
+            </datalist>
+
+            <div class="textlabel">
+                <label for="huisnummer">Huisnummer*:</label>
+                <span id="huisnummer-error" class="error"></span>
+            </div>
+            <input type="text" id="huisnummer" name="huisnummer" required><br>
+            <div class="">
+
+                <label for="event-descr" class="">Beschrijving</label>
+                <textarea name="omschrijving" id="event-descr" class="" cols="30" rows="10"
+                    maxlength="255"></textarea>
+            </div>
+            <div class="">
+                <button type="submit" class="" id="submit">aanmaken</button>
+            </div>
+
+        </form>
+        </main>
+        <footer id="footer">
+        <div id="contact">
+          <a href="#">Contact us</a>
+        </div>
+        <div id="copywrite">
+          &copy; 2023 WatGeWilt
+        </div>
+      </footer>
+    <!-- Optional JavaScript
+    jQuery first, then Popper.js, then Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script> -->
 </body>
+
 </html>
